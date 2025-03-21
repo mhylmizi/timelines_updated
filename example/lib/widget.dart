@@ -23,17 +23,18 @@ const kNavigationCardRadius = 8.0;
 
 class NavigationCard extends StatelessWidget with NavigateMixin {
   const NavigationCard({
-    Key? key,
+    super.key,
     this.margin,
     this.borderRadius =
         const BorderRadius.all(Radius.circular(kNavigationCardRadius)),
     this.navigationBuilder,
     required this.child,
-  }) : super(key: key);
+  });
 
   final EdgeInsetsGeometry? margin;
   final BorderRadius? borderRadius;
   final Widget child;
+  @override
   final NavigateWidgetBuilder? navigationBuilder;
 
   @override
@@ -53,12 +54,11 @@ class NavigationCard extends StatelessWidget with NavigateMixin {
   }
 }
 
-class TitleAppBar extends StatelessWidget with PreferredSizeWidget {
-  TitleAppBar(
+class TitleAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const TitleAppBar(
     this.title, {
-    Key? key,
-  })  : preferredSize = Size.fromHeight(kToolbarHeight),
-        super(key: key);
+    super.key,
+  }) : preferredSize = const Size.fromHeight(kToolbarHeight);
 
   @override
   final Size preferredSize;
